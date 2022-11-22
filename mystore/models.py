@@ -39,7 +39,8 @@ class Order(models.Model):
     location = models.ForeignKey("Location", on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(default=datetime.date.today)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(default=1)
+    
 
     def __str__(self):
         return f"{self.inventory.__str__()}, {self.location.__str__()}, {self.quantity}"

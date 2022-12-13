@@ -33,6 +33,7 @@ class OrderFieldSerializer(serializers.ModelSerializer):
     location = serializers.CharField(read_only=True)
     inventory = serializers.CharField(read_only=True)
     quantity = serializers.IntegerField(read_only=True)
+    price_per_unit = serializers.DecimalField(read_only=True, max_digits=5, decimal_places=2, source="inventory.price_per_unit")
 
     class Meta: 
         model = Order
@@ -40,6 +41,7 @@ class OrderFieldSerializer(serializers.ModelSerializer):
             "account",
             "location",
             "inventory",
+            "price_per_unit",
             "quantity",
         )
 
@@ -58,29 +60,3 @@ class OrderLogSerializer(serializers.ModelSerializer):
         order_serializer = OrderFieldSerializer(orders, many=True)
         return order_serializer.data
 
-# class OrderSerializer(serializers.ModelSerializer):
-#     # account = serializers.IntegerField(read_only=True)
-#     # location = serializers.IntegerField(read_only=True)
-#     # inventory = serializers.IntegerField(read_only=True)
-#     # user = serializers.IntegerField(read_only=True)
-#     # date = serializers.DateField(read_only=True)
-#     # quantity = serializers.IntegerField(read_only=True)
-#     # inventory = InventorySerializer(read_only=True)
-#     # day = serializers.DateField(read_only=True)
-#     # account_name = serializers.CharField(read_only=True, source='account.name')
-#     # inventory__name = serializers.CharField(read_only=True, source='inventory.name')
-#     # location_name = serializers.CharField(read_only=True, source='location.name')
-    
-
-#     class Meta:
-#         model = Order
-#         fields = '__all__'
-#         # fields = (
-#         #     "id",
-#         #     "account",
-#         #     "location",
-#         #     "inventory",
-#         #     "user",
-#         #     "date",
-#         #     "quantity",
-#         # )

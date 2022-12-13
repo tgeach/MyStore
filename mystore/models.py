@@ -12,7 +12,7 @@ class Account(models.Model):
 class Inventory(models.Model):
     name = models.CharField(max_length=250)
     unit = models.CharField(max_length=250)
-    price_per_unit = models.FloatField()
+    price_per_unit = models.DecimalField(max_digits=5, decimal_places=2)
 
     class Meta:
         verbose_name_plural = "Inventory"

@@ -2,3 +2,6 @@
 python manage.py makemigrations --dry-run (optional --verbosity 1,2,3)
 coverage run --omit='*/.venv/*' manage.py test
 coverage html
+
+pip install django-cors-headers
+pip install djangorestframework-simplejwt

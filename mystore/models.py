@@ -1,10 +1,10 @@
 import datetime
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 class Account(models.Model):
     name = models.CharField(max_length=250)
-    user = models.ManyToManyField(User)
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
         return self.name
@@ -37,7 +37,7 @@ class Order(models.Model):
     inventory = models.ForeignKey("Inventory", on_delete=models.CASCADE)
     account = models.ForeignKey("Account", on_delete=models.CASCADE)
     location = models.ForeignKey("Location", on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(default=datetime.date.today)
     quantity = models.IntegerField(default=1)
     

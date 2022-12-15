@@ -7,7 +7,7 @@ router=routers.DefaultRouter()
 router.register(r"accounts", views.AccountViewSet)
 router.register(r"inventory", views.InventoryViewSet)
 router.register(r"locations", views.LocationViewSet)
-router.register(r"order_log", views.OrderLogViewSet)
+router.register(r"order_log", views.OrderLogViewSet, basename='order logs')
 router.register(r"order_fields", views.OrderFieldViewSet, basename="order fields")
 
 

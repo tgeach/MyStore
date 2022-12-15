@@ -31,6 +31,7 @@ class LocationSerializer(serializers.ModelSerializer):
 class OrderFieldSerializer(serializers.ModelSerializer):
     account = serializers.CharField(read_only=True)
     location = serializers.CharField(read_only=True)
+    user = serializers.CharField(read_only=True)
     inventory = serializers.CharField(read_only=True)
     quantity = serializers.IntegerField(read_only=True)
     price_per_unit = serializers.DecimalField(read_only=True, max_digits=5, decimal_places=2, source="inventory.price_per_unit")
@@ -40,6 +41,7 @@ class OrderFieldSerializer(serializers.ModelSerializer):
         fields = (
             "account",
             "location",
+            "user",
             "inventory",
             "price_per_unit",
             "quantity",
